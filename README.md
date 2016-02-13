@@ -1,10 +1,13 @@
 # PIN: Python Import Navigation
 
+PIN is still under active development and not yet suitable for release, sorry! We hope that this
+will change soon.
+
 ## Overview
 
 PIN is a Vim plugin for navigating Python import statements.
 
-Specifically, given an import statement a Python file, PIN allows you to open the file that
+Specifically, given an import statement in a Python file, PIN allows you to open the file that
 provides the Python module being imported. This is done by examining the `__file__` attribute
 of the imported module, consequently, the file may not be Python source code.
 
