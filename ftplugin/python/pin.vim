@@ -2,19 +2,28 @@
 " Last Change: February 13, 2016
 " Maintainer: Roland Maio <rolandmaio38@gmail.com>
 
-if exists("g:loaded_imp_nav")
+if !has("python")
+    echo "This Vim instance does not support Python 2."
+    echo "Aborting loading Python Import Navigation plugin."
     finish
 endif
-let g:loaded_imp_nav = 1
+
+if !exists(":PINGo")
+    command -nargs=0 PINGo :call <SID>openFile()
+else
+    echo "PINGo command is already mapped."
+    echo "Aborting loading Python Import Navigation plugin."
+    finish
+endif
+
+if exists("g:loaded_pin")
+    finish
+endif
+let g:loaded_pin = 1
 
 let s:save_cpo = &cpo
 set cpo&vim
 
-" TODO: Add check for Python 2 support here.
-
-map <unique> <Leader>gf <Plug>imp_nav_goto
-noremap <unique> <script> <Plug>imp_nav_goto <SID>openFile
-noremap <SID>openFile :call <SID>openFile()<CR>
 
 function s:openFile()
 python << EOF

@@ -1,0 +1,12 @@
+*pin.txt* Plugin for navigating Python import statements
+
+This plugin provides a command for navigating to the files in import statements.
+
+Commands:
+:PINGo
+	Open the file that provides the Python module currently under the cursor.
+	The file is opened in a new tab.
+
+*pin-settings*
+
+You can disable loading of this plugin by setting g:loaded_pin=1 in your .vimrc.
