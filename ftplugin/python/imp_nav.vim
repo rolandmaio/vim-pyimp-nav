@@ -1,5 +1,5 @@
 " Vim File Type Plugin for navigating Python module imports.
-" Last Change: February 9, 2016
+" Last Change: February 12, 2016
 " Maintainer: Roland Maio <rolandmaio38@gmail.com>
 
 if exists("g:loaded_imp_nav")
@@ -13,7 +13,6 @@ set cpo&vim
 map <unique> <Leader>gf <Plug>imp_nav_goto
 noremap <unique> <script> <Plug>imp_nav_goto <SID>openFile
 noremap <SID>openFile :call <SID>openFile()<CR>
-"noremap <SID>Add  :call <SID>Add(expand("<cword>"), 1)<CR>
 
 function s:openFile()
 python << EOF
