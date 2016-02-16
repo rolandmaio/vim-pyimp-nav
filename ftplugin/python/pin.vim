@@ -8,6 +8,11 @@ if !has("python")
     finish
 endif
 
+if exists("g:loaded_pin")
+    finish
+endif
+let g:loaded_pin = 1
+
 if !exists(":PINGo")
     command -nargs=0 PINGo :call <SID>openFile()
 else
@@ -15,11 +20,6 @@ else
     echo "Aborting loading Python Import Navigation plugin."
     finish
 endif
-
-if exists("g:loaded_pin")
-    finish
-endif
-let g:loaded_pin = 1
 
 let s:save_cpo = &cpo
 set cpo&vim
