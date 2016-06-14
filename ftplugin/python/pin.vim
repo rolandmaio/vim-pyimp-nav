@@ -8,6 +8,10 @@ if !has("python")
     finish
 endif
 
+if exists("g:loaded_pin")
+    finish
+endif
+
 if !exists(":PINGo")
     command -nargs=0 PINGo :call <SID>openFile()
 else
@@ -16,9 +20,6 @@ else
     finish
 endif
 
-if exists("g:loaded_pin")
-    finish
-endif
 let g:loaded_pin = 1
 
 let s:save_cpo = &cpo
