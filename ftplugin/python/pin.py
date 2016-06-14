@@ -17,6 +17,7 @@ class Pin:
                 "'import', 'from', 'as'."
             )
 
+    def navigate(self):
         # Parse the current line into an abstract syntax tree. This should
         # fail if the current line is not syntactically correct Python 2.
         try:
@@ -42,6 +43,9 @@ class Pin:
         importTree = self.extractImportTree(self.lineTree)
         module = self.extractModule(importTree)
         package = pkgutil.get_loader(module)
+
+        if package is None:
+            raise ImportError("This module cannot be loaded.")
 
         if os.path.isdir(package.filename):
             if os.path.isfile(os.path.join(package.filename, "__init__.py")):
@@ -147,7 +151,7 @@ class Pin:
         )
 
 try:
-    Pin()
+    Pin().navigate()
 except ImportError as ie:
     print ie
 except ValueError as ve:
